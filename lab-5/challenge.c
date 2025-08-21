@@ -1,0 +1,28 @@
+#include<stdio.h>
+int main() {
+    int n;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    int arr[n], counted[n];
+    printf("Enter %d integers: ", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        counted[i] = 0;  
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (counted[i]) continue; 
+        int count = 1;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] == arr[i]) {
+                count++;
+                counted[j] = 1; 
+            }
+        }
+        if (count == 1)
+            printf("Element %d occurs %d time\n", arr[i], count);
+        else
+            printf("Element %d occurs %d times\n", arr[i], count);
+    }
+    return 0;
+}
